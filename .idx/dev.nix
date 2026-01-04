@@ -141,14 +141,13 @@
     '';
   };
 
-  idx.previews = {
-    enable = true;
-    previews = {
-      terminal = {
-        manager = "terminal";
-        command = [ "bash" ];
-        ];
-      };
+idx.previews = {
+  enable = true;
+  previews = {
+    terminal = {
+      manager = "terminal";
+      command = [ "bash" ];
     };
   };
-}
+};
+
