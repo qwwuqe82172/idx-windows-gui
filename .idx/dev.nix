@@ -53,7 +53,7 @@
       # =========================
       if [ ! -f "$VIRTIO_ISO" ]; then
         wget -O "$VIRTIO_ISO" \
-          https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable/virtio-win.iso
+          https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.271-1/virtio-win.iso
       fi
 
       # =========================
