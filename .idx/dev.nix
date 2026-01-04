@@ -151,10 +151,6 @@
           "echo 'noVNC running on port 8888'"
         ];
       };
-      terminal = {
-        manager = "terminal";
-        command = [ "bash" ];
-      };
     };
   };
 }
