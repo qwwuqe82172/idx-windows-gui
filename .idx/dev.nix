@@ -133,22 +133,22 @@ fi
   -cpu host,+topoext,hv_relaxed,hv_spinlocks=0x1fff,hv-passthrough,+pae,+nx,kvm=on,+svm \
   -smp 8,cores=8 \
   -M q35,usb=on \
-  -device usb-tablet \
+  -device usb-tablet -device qemu-xhci \
   -m 28672 \
   -device virtio-balloon-pci \
   -vga virtio \
   -net nic,netdev=n0,model=virtio-net-pci \
   -netdev user,id=n0,hostfwd=tcp::3389-:3389 \
-  -boot c \
+  -boot c -monitor stdio \
   -device virtio-serial-pci \
   -device virtio-rng-pci \
   -drive if=pflash,format=raw,readonly=on,file="$OVMF_CODE" \
   -drive if=pflash,format=raw,file="$OVMF_VARS" \
   -drive file="$RAW_DISK",format=qcow2,if=virtio \
-  -cdrom "$WIN_ISO" \
+  -drive file="$WIN_ISO",media=cdrom \
   -drive file="$VIRTIO_ISO",media=cdrom,if=ide \
   -uuid e47ddb84-fb4d-46f9-b531-14bb15156336 \
-  -vnc :0 \
+  -vnc :0 -serial none -parallel none \
   -display none \
   > /tmp/qemu.log 2>&1 &
 
