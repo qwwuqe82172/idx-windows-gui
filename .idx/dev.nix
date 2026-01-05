@@ -130,8 +130,8 @@ fi
       echo "Starting QEMU..."
       nohup qemu-system-x86_64 \
   -enable-kvm \
-  -cpu host,+topoext,hv_relaxed,hv_spinlocks=0x1fff,hv-passthrough,+pae,+nx,kvm=on,+svm \
-  -smp 8,cores=8 \
+  -cpu host,hypervisor=off,+topoext,hv_relaxed,hv_spinlocks=0x1fff,hv-passthrough,+pae,+nx,kvm=on,+svm,+vmx,hv_vapic,hv_time,hv_synic,hv_stimer,hv_vendor_id=Microsoft Hv \
+  -smp sockets=1,cores=4,threads=2 \
   -M q35,usb=on \
   -device usb-tablet -device qemu-xhci \
   -m 28672 \
@@ -139,7 +139,7 @@ fi
   -vga virtio \
   -net nic,netdev=n0,model=virtio-net-pci \
   -netdev user,id=n0,hostfwd=tcp::3389-:3389 \
-  -boot c -monitor stdio \
+  -boot c \
   -device virtio-serial-pci \
   -device virtio-rng-pci \
   -drive if=pflash,format=raw,readonly=on,file="$OVMF_CODE" \
